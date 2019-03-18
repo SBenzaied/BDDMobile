@@ -125,7 +125,7 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
             }
             
             
-            
+           
             print("Text field: \(textField?.text)")
             
         }))
@@ -167,6 +167,48 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
 
 
 }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+         //     liste.remove(at: indexPath.row)
+             context.delete(liste.remove(at: indexPath.row))
+            
+            
+            
+            do {
+                try context.save()
+                print("context saved")
+            } catch let error as NSError {
+                print("Could not save the database : \(error)")
+            }
+            
+            let fetchRequest: NSFetchRequest<Item> = NSFetchRequest<Item>(entityName: "Item")
+            do {
+                let fetchedResults = try context.fetch(fetchRequest)
+                let results = fetchedResults as! [NSManagedObject]
+                liste=results as! [Item]
+                if results.count > 0{
+                    for r in results as! [NSManagedObject]{
+                        if let itemName = r.value(forKey: "message") as? String
+                        {print (itemName)}
+                        
+                    }
+                    
+                }
+            } catch let error as NSError
+            { print("Could not fetch : \(error)")
+            }
+           
+       
+            
+            
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+    
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
     //    self.searchBar.showsCancelButton = true
     }
@@ -182,4 +224,4 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
   
 
 //
-//}
+}
