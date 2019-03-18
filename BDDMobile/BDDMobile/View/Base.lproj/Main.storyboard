@@ -52,7 +52,11 @@
                     <navigationItem key="navigationItem" title="ToDo" id="9eP-hf-T8G">
                         <barButtonItem key="leftBarButtonItem" title="Category" id="y9e-OK-3Va"/>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="Yov-Pc-IAu"/>
+                            <barButtonItem systemItem="add" id="Yov-Pc-IAu">
+                                <connections>
+                                    <action selector="Ajout:" destination="uSs-dj-uDL" id="Ljt-Wc-uJ6"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Sort" id="wBJ-22-JQe"/>
                         </rightBarButtonItems>
                     </navigationItem>
