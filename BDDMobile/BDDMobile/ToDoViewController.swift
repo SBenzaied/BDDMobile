@@ -14,30 +14,26 @@ class ToDoViewController : UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
 
+    
+
+    
  var liste=[Item]()
+    var itemName: [NSManagedObject] = []
 //  var listeTotale=[Item]()
 //  var recherche=[Item]()
 //
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate=self
+    
         // Do any additional setup after loading the view, typically from a nib.
-        
-//        liste.append(Item(message: "test",verif: true))
-//        liste.append(Item(message: "Test",verif: false))
-//        liste.append(Item(message: "MATCH",verif: true))
-//        listeTotale=liste
-//        recherche=liste
-//
+
       
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
         
-//      let newItem = NSEntityDescription.insertNewObject(forEntityName: "Item", into: context)
-//   
-//      newItem.setValue("Aventador", forKey: "message")
-//      newItem.setValue(false, forKey: "verif")
         
         do {
             try context.save()
@@ -48,9 +44,10 @@ class ToDoViewController : UITableViewController, UISearchBarDelegate {
         
         let fetchRequest: NSFetchRequest<Item> = NSFetchRequest<Item>(entityName: "Item")
         do {
-            let fetchedResults = try context.fetch(fetchRequest)
-            let results = fetchedResults as! [NSManagedObject]
-            liste=results as! [Item]
+            let results = try context.fetch(fetchRequest)
+            
+            liste = results
+            
             if results.count > 0{
                 for r in results as! [NSManagedObject]{
                     if let itemName = r.value(forKey: "message") as? String
@@ -135,20 +132,25 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
         
     }
     
-override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    
+override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> ItemViewTableCell {
     
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoViewCell") as! UITableViewCell
-     let item = liste[indexPath.row]
-         cell.textLabel?.text=item.message
-         cell.accessoryType = item.verif ? .checkmark : .none
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoViewCell") as! ItemViewTableCell
+    let item = liste[indexPath.row]
+    cell.item = item
+         //cell.textLabel?.text=item.message
+       // cell.check.isHidden = !item.verif
+    
+    //cell.accessoryType = item.verif ? .checkmark : .none
         
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoViewCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoViewCell") as! ItemViewTableCell
   let item = liste[indexPath.row]
 
   if (item.verif == false){
@@ -165,10 +167,10 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
      }
 
 
-
+ 
 }
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCell.EditingStyle.delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: ItemViewTableCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == ItemViewTableCell.EditingStyle.delete {
             
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -212,16 +214,38 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
     //    self.searchBar.showsCancelButton = true
     }
+        
+        
+        
     // Search Bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        liste=listeTotale
-//        recherche = searchText.isEmpty ? liste :
-//            liste.filter( { $0.message.localizedCaseInsensitiveContains(searchText) })
-//        liste=recherche
-//        tableView.reloadData()
+        if searchText != ""
+        {
+            var predicate: NSPredicate=NSPredicate()
+            predicate = NSPredicate(format: "title contains[c]'\(searchText)'")
+            
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+            fetchRequest.predicate=predicate
+            
+            do{
+                liste=try context.fetch(fetchRequest) as! [Item]
+                
+            }
+            
+            catch{print("erreur")}
+             tableView.reloadData()
+            
+        }
+
+        tableView.reloadData()
     }
+        
+        
      }
   
 
-//
 }
