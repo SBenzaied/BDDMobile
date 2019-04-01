@@ -16,7 +16,7 @@ class CategoryItem : UITableViewCell {
         didSet {
             
             let itemValid =  item != nil
-             textLabelCat?.text = item?.nomCat ?? ""
+             textLabel?.text = item?.nomCat ?? ""
       
             
             
