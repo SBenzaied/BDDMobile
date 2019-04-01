@@ -17,7 +17,9 @@ class CategoryItem : UITableViewCell {
             
             let itemValid =  item != nil
              textLabel?.text = item?.nomCat ?? ""
-      
+            
+            
+          
             
             
         }
