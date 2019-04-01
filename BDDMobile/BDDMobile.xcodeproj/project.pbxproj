@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08A03F3D2252103700FEA081 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A03F3C2252103700FEA081 /* CategoryViewController.swift */; };
+		08A03F3F2252131B00FEA081 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A03F3E2252131B00FEA081 /* CategoryItem.swift */; };
 		08C110CE223F84E000028D6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C110CD223F84E000028D6F /* AppDelegate.swift */; };
 		08C110D0223F84E000028D6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C110CF223F84E000028D6F /* ViewController.swift */; };
 		08C110D3223F84E000028D6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C110D1223F84E000028D6F /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08A03F3C2252103700FEA081 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		08A03F3E2252131B00FEA081 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		08C110CA223F84E000028D6F /* BDDMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BDDMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08C110CD223F84E000028D6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08C110CF223F84E000028D6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +47,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08A03F3A22520ED800FEA081 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				08C110CF223F84E000028D6F /* ViewController.swift */,
+				08C110E1223F980800028D6F /* ToDoViewController.swift */,
+				08A03F3C2252103700FEA081 /* CategoryViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		08A03F3B22520F2A00FEA081 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				08C110DF223F8E6B00028D6F /* Item.swift */,
+				08EAF61B2251F72A00E82B15 /* ItemViewTableCell.swift */,
+				08A03F3E2252131B00FEA081 /* CategoryItem.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		08C110C1223F84E000028D6F = {
 			isa = PBXGroup;
 			children = (
@@ -62,15 +86,13 @@
 		08C110CC223F84E000028D6F /* BDDMobile */ = {
 			isa = PBXGroup;
 			children = (
+				08A03F3B22520F2A00FEA081 /* Class */,
+				08A03F3A22520ED800FEA081 /* Controller */,
 				08C70C68223FD8A3006056AA /* Model */,
 				08C70C67223FD872006056AA /* View */,
 				08C110CD223F84E000028D6F /* AppDelegate.swift */,
-				08C110CF223F84E000028D6F /* ViewController.swift */,
-				08C110E1223F980800028D6F /* ToDoViewController.swift */,
 				08C110D4223F84E100028D6F /* Assets.xcassets */,
 				08C110D9223F84E100028D6F /* Info.plist */,
-				08C110DF223F8E6B00028D6F /* Item.swift */,
-				08EAF61B2251F72A00E82B15 /* ItemViewTableCell.swift */,
 			);
 			path = BDDMobile;
 			sourceTree = "<group>";
@@ -165,6 +187,8 @@
 			files = (
 				08C110E2223F980800028D6F /* ToDoViewController.swift in Sources */,
 				08C70C6B223FD8C1006056AA /* BDDMobile.xcdatamodeld in Sources */,
+				08A03F3F2252131B00FEA081 /* CategoryItem.swift in Sources */,
+				08A03F3D2252103700FEA081 /* CategoryViewController.swift in Sources */,
 				08C110D0223F84E000028D6F /* ViewController.swift in Sources */,
 				08C110E0223F8E6B00028D6F /* Item.swift in Sources */,
 				08EAF61C2251F72A00E82B15 /* ItemViewTableCell.swift in Sources */,

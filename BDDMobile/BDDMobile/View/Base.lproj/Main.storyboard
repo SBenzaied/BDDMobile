@@ -99,13 +99,13 @@
         <!--Categories-->
         <scene sceneID="zVg-50-TqV">
             <objects>
-                <tableViewController id="mnG-zv-oej" sceneMemberID="viewController">
+                <tableViewController id="mnG-zv-oej" customClass="CategoryViewController" customModule="BDDMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Lod-m3-Or1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SoP-w7-zgw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryViewCell" id="SoP-w7-zgw" customClass="CategoryItem" customModule="BDDMobile" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SoP-w7-zgw" id="ES4-It-7RR">
@@ -121,6 +121,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textLabelCat" destination="Xst-7r-X2V" id="YnQ-9h-3KU"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -128,9 +131,13 @@
                             <outlet property="delegate" destination="mnG-zv-oej" id="XV1-pj-X3d"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Categories" id="5q7-PS-JIq">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="jc0-lZ-LBD"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="F4V-8w-EFw"/>
+                    <navigationItem key="navigationItem" title="Categories" id="l4L-5A-QAY">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="73V-Jv-WR9">
+                            <connections>
+                                <action selector="addCategory:" destination="mnG-zv-oej" id="Gph-We-kW8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="3Rl-RW-Q0n"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hgh-6a-5x3" userLabel="First Responder" sceneMemberID="firstResponder"/>

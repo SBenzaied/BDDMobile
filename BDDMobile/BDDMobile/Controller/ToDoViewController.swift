@@ -19,9 +19,7 @@ class ToDoViewController : UITableViewController, UISearchBarDelegate {
     
  var liste=[Item]()
     var itemName: [NSManagedObject] = []
-//  var listeTotale=[Item]()
-//  var recherche=[Item]()
-//
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +70,7 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
     //    return liste.count
         return liste.count
     }
+    
     @IBAction func Ajout(_ sender: Any) {
    
         let alert = UIAlertController(title: "Some Title", message: "Enter a text", preferredStyle: .alert)
