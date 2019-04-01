@@ -13,7 +13,7 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
     
     var liste=[Category]()
      var listeItem=[Item]()
-    var categorie : String?
+    var categorie : Category?
     var itemName: [NSManagedObject] = []
     
     @IBOutlet weak var label: UITextField!
@@ -27,10 +27,14 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
         
   let appDelegate = UIApplication.shared.delegate as! AppDelegate
   let context = appDelegate.persistentContainer.viewContext
-  let newItem = NSEntityDescription.insertNewObject(forEntityName: "Item", into: context)
-
-       newItem.setValue(label?.text, forKey: "message")
-       newItem.setValue(false, forKey: "verif")
+  
+        
+        let newItem = Item(context: context)
+        newItem.message = label?.text
+        newItem.verif = false
+        newItem.category = categorie
+        
+     
 
       
 
@@ -70,7 +74,7 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-     categorie = liste[row].nomCat
+     categorie = liste[row]
         
     }
     
