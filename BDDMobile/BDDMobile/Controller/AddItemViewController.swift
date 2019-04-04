@@ -9,21 +9,49 @@
 import UIKit
 import CoreData
 
-class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    
+    
     
     var liste=[Category]()
      var listeItem=[Item]()
     var categorie : Category?
     var itemName: [NSManagedObject] = []
     
+    
     @IBOutlet weak var label: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var imageview: UIImageView!
+   
+    
+   
+    
+    @IBAction func onClickPickImage(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        
+        self.present(imagePicker, animated: true){}
+        
+        
+        
+    }
+    
+ @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            imageview.image=image
+            print("marche")
+        }
+        else {print("marche pas")}
+      self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     
     
     
     @IBAction func ajout(_ sender: Any) {
-        
-        
         
   let appDelegate = UIApplication.shared.delegate as! AppDelegate
   let context = appDelegate.persistentContainer.viewContext
@@ -36,7 +64,6 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
         
      
 
-      
 
       do {
           try context.save()
@@ -47,7 +74,6 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
     } catch let error as NSError {
      
     print("Could not save the database : \(error)")
-        
         
         }
         
@@ -81,7 +107,7 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+  
         // Do any additional setup after loading the view, typically from a nib.
         
         
@@ -121,3 +147,4 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
     
     
 }
+
