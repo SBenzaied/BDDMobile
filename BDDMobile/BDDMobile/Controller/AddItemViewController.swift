@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     
     
@@ -17,7 +17,7 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
      var listeItem=[Item]()
     var categorie : Category?
     var itemName: [NSManagedObject] = []
-    var imagePicker = UIImagePickerController()
+    
     
     @IBOutlet weak var label: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
@@ -27,7 +27,8 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
    
     
     @IBAction func onClickPickImage(_ sender: Any) {
-        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
         
@@ -40,8 +41,9 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
  @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             imageview.image=image
-            
+            print("marche")
         }
+        else {print("marche pas")}
       self.dismiss(animated: true, completion: nil)
     }
     
