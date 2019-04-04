@@ -121,6 +121,14 @@ class CategoryViewController: UITableViewController{
         
     }
     
+    
+    @IBAction func back(_ sender: Any) {
+          dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //    return liste.count
         return liste.count

@@ -115,6 +115,7 @@
                                 <connections>
                                     <outlet property="checkLabel" destination="sbI-4j-BE0" id="3cM-OZ-bev"/>
                                     <outlet property="messageLabel" destination="L0b-WS-Z8J" id="oSS-BE-YSZ"/>
+                                    <segue destination="4rD-St-0W2" kind="show" trigger="accessoryAction" id="PkF-K2-o8F"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -206,19 +207,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SoP-w7-zgw" id="ES4-It-7RR">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xst-7r-X2V">
-                                            <rect key="frame" x="30" y="12" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="textLabelCat" destination="Xst-7r-X2V" id="YnQ-9h-3KU"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -232,7 +221,11 @@
                                 <action selector="addCategory:" destination="mnG-zv-oej" id="Gph-We-kW8"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="3Rl-RW-Q0n"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="3Rl-RW-Q0n">
+                            <connections>
+                                <action selector="back:" destination="mnG-zv-oej" id="tIn-HU-l2S"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hgh-6a-5x3" userLabel="First Responder" sceneMemberID="firstResponder"/>
