@@ -179,7 +179,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="soleil.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Pkj-DD-P3n">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imageTaimageTasksk" translatesAutoresizingMaskIntoConstraints="NO" id="Pkj-DD-P3n">
                                 <rect key="frame" x="69" y="417" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -287,6 +287,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="soleil.jpg" width="16" height="16"/>
+        <image name="imageTaimageTasksk" width="16" height="16"/>
     </resources>
 </document>

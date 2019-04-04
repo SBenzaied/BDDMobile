@@ -41,6 +41,7 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
  @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             imageview.image=image
+           
             print("marche")
         }
         else {print("marche pas")}
@@ -55,11 +56,12 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
         
   let appDelegate = UIApplication.shared.delegate as! AppDelegate
   let context = appDelegate.persistentContainer.viewContext
-  
+   let data = (imageview?.image)!.pngData()
         
         let newItem = Item(context: context)
         newItem.message = label?.text
         newItem.verif = false
+        newItem.photo = data
         newItem.category = categorie
         
      
