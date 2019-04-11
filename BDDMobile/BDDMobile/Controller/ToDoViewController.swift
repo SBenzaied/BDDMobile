@@ -34,7 +34,7 @@ class ToDoViewController : UITableViewController, UISearchBarDelegate {
             destVC.texteTitre=itemselect.message
   
             
-       
+            destVC.itemEdit=itemselect
             destVC.itemPhoto=UIImage(data:itemselect.photo!,scale:1.0)
             destVC.itemdatecreation=itemselect.datecreation
             destVC.itemdatemodification=itemselect.datemodification
@@ -42,7 +42,7 @@ class ToDoViewController : UITableViewController, UISearchBarDelegate {
 //            destVC.ItemDateModif?.text=itemselect.message
        //     destVC.ItemDescription.text=itemselect.message
              destVC.itemcategory=itemselect.category
-            
+            destVC.itemdescription =  itemselect.descriptionitem
             
         
             

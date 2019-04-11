@@ -10,23 +10,28 @@ import UIKit
 import CoreData
 var liste=[Category]()
 
-class ShowItemViewController : UIViewController, UIPickerViewDelegate,UIPickerViewDataSource {
+class ShowItemViewController : UIViewController, UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     
     
     /*UIPickerViewDataSource, UIPickerViewDelegate,*/
+    @IBOutlet weak var ItemTitleText: UITextField!
     @IBOutlet weak var ItemPhoto: UIImageView!
     @IBOutlet weak var ItemTitle: UILabel?
     @IBOutlet weak var ItemDescription: UITextView?
     @IBOutlet weak var ItemCategory: UIPickerView!
     @IBOutlet weak var ItemDateCreate: UILabel!
     @IBOutlet weak var ItemDateModif: UILabel!
+    
+    @IBOutlet weak var Valider: UIButton!
+    var itemEdit : Item!
     var texteTitre : String!
     var itemPhoto : UIImage!
     var itemdescription: String!
     var itemdatecreation : Date!
     var itemdatemodification : Date!
     var itemcategory : Category!
+    
     
     func numberOfComponents(in ItemCategory: UIPickerView) -> Int {
         return 1
@@ -106,14 +111,73 @@ class ShowItemViewController : UIViewController, UIPickerViewDelegate,UIPickerVi
         
         
         
-        ItemTitle?.text=texteTitre
-        ItemDescription?.text=texteTitre
+        ItemTitleText?.text=texteTitre
+        ItemDescription?.text=itemdescription
         ItemPhoto.image =  itemPhoto
         ItemDateCreate.text = myStringafd
         ItemDateModif.text  = myStringafd2
         ItemCategory.reloadComponent(0)
         
     }
+    
+    
+    
+    
+    @IBAction func ModifierTache(_ sender: Any) {
+        
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let data = (ItemPhoto.image)!.pngData()
+        let newItem = Item(context: context)
+        newItem.message = ItemTitleText?.text
+        newItem.descriptionitem=ItemDescription!.text
+        newItem.verif = false
+        newItem.photo = data
+        newItem.datecreation = itemdatecreation
+        newItem.datemodification = Date()
+        newItem.category = itemcategory
+        
+        
+        
+        
+        do {
+            try context.save()
+            print("context saved")
+            
+            
+            
+        } catch let error as NSError {
+            
+            print("Could not save the database : \(error)")
+            
+        }
+        
+        
+    }
+    
+    @IBAction func ModifierImage(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        
+        self.present(imagePicker, animated: true){}
+        
+        
+        
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            ItemPhoto.image=image
+            
+            print("marche")
+        }
+        else {print("marche pas")}
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     
 }

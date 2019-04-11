@@ -23,6 +23,7 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var imageview: UIImageView!
    
+    @IBOutlet weak var descript: UITextView!
     
    
     
@@ -54,31 +55,34 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
     
     @IBAction func ajout(_ sender: Any) {
         
-  let appDelegate = UIApplication.shared.delegate as! AppDelegate
-  let context = appDelegate.persistentContainer.viewContext
-   let data = (imageview?.image)!.pngData()
-        let newItem = Item(context: context)
-        newItem.message = label?.text
-        newItem.verif = false
-        newItem.photo = data
-        newItem.datecreation = Date()
-        newItem.datemodification = Date()
-        newItem.category = categorie
+      let appDelegate = UIApplication.shared.delegate as! AppDelegate
+      let context = appDelegate.persistentContainer.viewContext
+       let data = (imageview?.image)!.pngData()
+            let newItem = Item(context: context)
+            newItem.message = label?.text
+            newItem.descriptionitem = descript?.text
+            newItem.verif = false
+            newItem.photo = data
+            newItem.datecreation = Date()
+            newItem.datemodification = Date()
+            newItem.category = categorie
         
-     
-
-
-      do {
-          try context.save()
-          print("context saved")
-
-
-     
-    } catch let error as NSError {
-     
-    print("Could not save the database : \(error)")
         
-        }
+
+
+          do {
+              try context.save()
+              print("context saved")
+
+
+         
+        } catch let error as NSError {
+         
+        print("Could not save the database : \(error)")
+            
+            }
+        
+        dismiss(animated: true, completion: nil)
         
         
         
