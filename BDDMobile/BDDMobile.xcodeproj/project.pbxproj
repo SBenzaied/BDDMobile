@@ -56,8 +56,8 @@
 			children = (
 				08C110CF223F84E000028D6F /* ViewController.swift */,
 				08C110E1223F980800028D6F /* ToDoViewController.swift */,
-				08A03F3C2252103700FEA081 /* CategoryViewController.swift */,
 				08A03F4422523E5D00FEA081 /* AddItemViewController.swift */,
+				08A03F3C2252103700FEA081 /* CategoryViewController.swift */,
 				08004E32225F19DF00B78F40 /* ShowItemViewController.swift */,
 			);
 			path = Controller;

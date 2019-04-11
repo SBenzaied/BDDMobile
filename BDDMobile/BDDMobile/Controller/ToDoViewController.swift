@@ -148,40 +148,40 @@ class ToDoViewController : UITableViewController, UISearchBarDelegate {
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
         
-        
-        func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-            //    self.searchBar.showsCancelButton = true
-        }
-        
-        
-        
-        // Search Bar
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            if searchText != ""
-            {
-                var predicate : NSPredicate=NSPredicate()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //    self.searchBar.showsCancelButton = true
+    }
+    
+    
+    
+    // Search Bar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText != ""
+        {
+            var predicate : NSPredicate=NSPredicate()
+            
+            predicate           =   NSPredicate(format: "message contains[cd] %@", searchText)
+            let appDelegate     =   UIApplication.shared.delegate as! AppDelegate
+            let context         =   appDelegate.persistentContainer.viewContext
+            let fetchRequest    =   NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+            
+            fetchRequest.predicate=predicate
+            
+            do {
+                liste           =   try context.fetch(fetchRequest) as! [Item]
+            }
                 
-                predicate           =   NSPredicate(format: "title contains[c]'\(searchText)'")
-                let appDelegate     =   UIApplication.shared.delegate as! AppDelegate
-                let context         =   appDelegate.persistentContainer.viewContext
-                let fetchRequest    =   NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
-                
-                fetchRequest.predicate=predicate
-                
-                do {
-                    liste           =   try context.fetch(fetchRequest) as! [Item]
-                }
-                    
-                catch{
-                    print("erreur")
-                }
-                
-                tableView.reloadData()
-                
+            catch{
+                print("erreur")
             }
             
             tableView.reloadData()
+            
         }
+        
+        tableView.reloadData()
     }
     
 }
