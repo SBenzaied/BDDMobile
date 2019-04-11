@@ -32,8 +32,7 @@ class ToDoViewController : UITableViewController, UISearchBarDelegate {
             print(itemselect.message!)
             print("test2")
             destVC.texteTitre=itemselect.message
-            let image = UIImage(named: "sample")
-            let data = image?.pngData()
+  
             
        
             destVC.itemPhoto=UIImage(data:itemselect.photo!,scale:1.0)
@@ -42,7 +41,7 @@ class ToDoViewController : UITableViewController, UISearchBarDelegate {
 //            destVC.ItemDescription?.text=itemselect.message
 //            destVC.ItemDateModif?.text=itemselect.message
        //     destVC.ItemDescription.text=itemselect.message
-            // destVC.ItemCategory=itemselect.category
+             destVC.itemcategory=itemselect.category
             
             
         

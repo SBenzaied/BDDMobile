@@ -57,7 +57,6 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
   let appDelegate = UIApplication.shared.delegate as! AppDelegate
   let context = appDelegate.persistentContainer.viewContext
    let data = (imageview?.image)!.pngData()
-        
         let newItem = Item(context: context)
         newItem.message = label?.text
         newItem.verif = false
@@ -104,6 +103,7 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
+       
      categorie = liste[row]
         
     }

@@ -8,9 +8,10 @@
 
 import UIKit
 import CoreData
+var liste=[Category]()
 
-
-class ShowItemViewController : UIViewController {
+class ShowItemViewController : UIViewController, UIPickerViewDelegate {
+    
     
     @IBOutlet weak var ItemPhoto: UIImageView!
     @IBOutlet weak var ItemTitle: UILabel?
@@ -23,7 +24,7 @@ class ShowItemViewController : UIViewController {
     var itemdescription: String!
     var itemdatecreation : Date!
     var itemdatemodification : Date!
-
+    var itemcategory : Category!
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -45,14 +46,61 @@ class ShowItemViewController : UIViewController {
          // again convert your date to string
          let myStringafd = formatter.string(from: yourDate!)
          let myStringafd2 = formatter.string(from: yourDate2!)
+        
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        
+        
+        do {
+            try context.save()
+            print("context saved")
+        } catch let error as NSError {
+            print("Could not save the database : \(error)")
+        }
+        
+        let fetchRequest: NSFetchRequest<Category> = NSFetchRequest<Category>(entityName: "Category")
+        do {
+            let results = try context.fetch(fetchRequest)
+            
+            liste = results
+       
+            
+            if results.count > 0{
+                for r in results as! [NSManagedObject]{
+                    if let itemName = r.value(forKey: "nomCat") as? String
+                    {print (itemName)}
+                    
+                }
+                
+            }
+        } catch let error as NSError
+        { print("Could not fetch : \(error)")
+        }
+        
          
          
   
         ItemTitle?.text=texteTitre
         ItemDescription?.text=texteTitre
-        ItemPhoto=UIImageView(image: itemPhoto)
+        ItemPhoto.image =  itemPhoto
         ItemDateCreate.text = myStringafd
         ItemDateModif.text  = myStringafd2
+    }
+    
+    
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return liste.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        
+        itemcategory = liste[row]
+        
     }
     
 }
