@@ -13,13 +13,9 @@ class ItemViewTableCell : UITableViewCell {
     var item : Item? {
         
         didSet {
-            
-            let itemValid =  item != nil
-            
-            checkLabel.text = (itemValid && item!.verif) ? "✔︎" : ""
-            messageLabel?.text = item?.message ?? ""
-            
-            
+            let itemValid       =   item != nil
+            checkLabel.text     =   (itemValid && item!.verif) ? "✔︎" : ""
+            messageLabel?.text  =   item?.message ?? ""
         }
     }
     
