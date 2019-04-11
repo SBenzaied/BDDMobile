@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08004E33225F19DF00B78F40 /* ShowItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08004E32225F19DF00B78F40 /* ShowItemViewController.swift */; };
 		08A03F3D2252103700FEA081 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A03F3C2252103700FEA081 /* CategoryViewController.swift */; };
 		08A03F3F2252131B00FEA081 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A03F3E2252131B00FEA081 /* CategoryItem.swift */; };
 		08A03F4522523E5D00FEA081 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A03F4422523E5D00FEA081 /* AddItemViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08004E32225F19DF00B78F40 /* ShowItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowItemViewController.swift; sourceTree = "<group>"; };
 		08A03F3C2252103700FEA081 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		08A03F3E2252131B00FEA081 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		08A03F4422523E5D00FEA081 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				08C110E1223F980800028D6F /* ToDoViewController.swift */,
 				08A03F3C2252103700FEA081 /* CategoryViewController.swift */,
 				08A03F4422523E5D00FEA081 /* AddItemViewController.swift */,
+				08004E32225F19DF00B78F40 /* ShowItemViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			files = (
 				08C110E2223F980800028D6F /* ToDoViewController.swift in Sources */,
 				08C70C6B223FD8C1006056AA /* BDDMobile.xcdatamodeld in Sources */,
+				08004E33225F19DF00B78F40 /* ShowItemViewController.swift in Sources */,
 				08A03F3F2252131B00FEA081 /* CategoryItem.swift in Sources */,
 				08A03F3D2252103700FEA081 /* CategoryViewController.swift in Sources */,
 				08C110D0223F84E000028D6F /* ViewController.swift in Sources */,

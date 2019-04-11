@@ -150,4 +150,39 @@ class CategoryViewController: UITableViewController{
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: ItemViewTableCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == ItemViewTableCell.EditingStyle.delete {
+            
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            //     liste.remove(at: indexPath.row)
+            context.delete(liste.remove(at: indexPath.row))
+            
+            
+            
+            do {
+                try context.save()
+                print("context saved")
+            } catch let error as NSError {
+                print("Could not save the database : \(error)")
+            }
+            
+            let fetchRequest: NSFetchRequest<Category> = NSFetchRequest<Category>(entityName: "Category")
+            do {
+                let fetchedResults = try context.fetch(fetchRequest)
+                let results = fetchedResults as! [NSManagedObject]
+                liste=results as! [Category]
+            } catch let error as NSError
+            { print("Could not fetch : \(error)")
+            }
+            
+            
+            
+            
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }}
+    
+    
+    
 }
