@@ -106,9 +106,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="uSs-dj-uDL" id="7bd-sw-zO5"/>
-                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ToDoViewCell" rowHeight="116" id="k3i-Wo-U3y" userLabel="toDo" customClass="ItemViewTableCell" customModule="BDDMobile" customModuleProvider="target">
@@ -326,6 +323,7 @@
         <image name="imageTaimageTasksk" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="tc5-8j-IQc"/>
         <segue reference="b4L-Ew-PD2"/>
     </inferredMetricsTieBreakers>
 </document>
