@@ -100,8 +100,8 @@ class ShowItemViewController : UIViewController, UIPickerViewDelegate,UIPickerVi
         ItemTitleText?.text     =   texteTitre
         ItemDescription?.text   =   itemdescription
         ItemPhoto.image         =   itemPhoto
-        ItemDateCreate.text     =   dateCreation
-        ItemDateModif.text      =   dateModification
+        ItemDateCreate.text     =   "Crée le : "+dateCreation
+        ItemDateModif.text      =   "Modifié le : "+dateModification
         ItemCategory.reloadComponent(0)
         
     }
