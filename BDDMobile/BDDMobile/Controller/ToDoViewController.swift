@@ -180,6 +180,31 @@ class ToDoViewController : UITableViewController, UISearchBarDelegate {
             tableView.reloadData()
             
         }
+        else{
+            let appDelegate     =   UIApplication.shared.delegate as! AppDelegate
+            let context         =   appDelegate.persistentContainer.viewContext
+            
+            do {
+                try context.save()
+                print("context saved")
+            }
+                
+            catch let error as NSError {
+                print("Could not save the database : \(error)")
+            }
+            
+            let fetchRequest: NSFetchRequest<Item> = NSFetchRequest<Item>(entityName: "Item")
+            
+            do {
+                let results  = try context.fetch(fetchRequest)
+                liste        = results
+            }
+                
+            catch let error as NSError {
+                print("Could not fetch : \(error)")
+            }
+            
+        }
         
         tableView.reloadData()
     }
