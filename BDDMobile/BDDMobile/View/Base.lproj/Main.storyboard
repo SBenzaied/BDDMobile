@@ -29,6 +29,10 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DTG-yZ-xhr">
                                 <rect key="frame" x="35" y="303" width="305" height="116"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="4rD-St-0W2" id="sdw-GP-iQ3"/>
+                                    <outlet property="delegate" destination="4rD-St-0W2" id="e9N-qm-e6Q"/>
+                                </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsJ-Ez-M9d">
                                 <rect key="frame" x="34" y="112" width="302" height="21"/>
