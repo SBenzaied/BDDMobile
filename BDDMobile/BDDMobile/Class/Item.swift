@@ -7,20 +7,3 @@
 //
 
 import Foundation
-
-
-//class Item
-//{
-//    var message :String
-//    var verif   :Bool
-//    
-//    init(message: String, verif: Bool=false){
-//        self.message=message
-//        self.verif=verif
-//    }
-//    
-//    func toggleChecked (){
-//        verif = !verif
-//    }
-//    
-//}

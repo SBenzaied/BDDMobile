@@ -14,14 +14,8 @@ class CategoryItem : UITableViewCell {
     var item : Category? {
         
         didSet {
-            
-            let itemValid =  item != nil
-             textLabel?.text = item?.nomCat ?? ""
-            
-            
-          
-            
-            
+            let itemValid         =  item != nil
+            textLabel?.text       =  item?.nomCat ?? ""
         }
     }
     
