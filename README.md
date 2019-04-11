@@ -1,13 +1,15 @@
 Données en Coredata
 
 Categorie:
--Ajout et suppression catégorie
+-Ajout Catégorie
+-Suppression catégorie au swipe
 
 TodoList:
 -Recherche fonctionnelle
 -Checker la tâche
 -Ajout d'une tâche
 -Affiche détail de la tâche
+-Supprimer une tâche au swipe
 
 AjoutTache:
 -Ecrire le titre de la tâche
