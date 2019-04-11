@@ -62,6 +62,8 @@ class AddItemViewController : UIViewController, UIPickerViewDataSource, UIPicker
         newItem.message = label?.text
         newItem.verif = false
         newItem.photo = data
+        newItem.datecreation = Date()
+        newItem.datemodification = Date()
         newItem.category = categorie
         
      
