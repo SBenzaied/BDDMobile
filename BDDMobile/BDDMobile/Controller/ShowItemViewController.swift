@@ -112,17 +112,17 @@ class ShowItemViewController : UIViewController, UIPickerViewDelegate,UIPickerVi
     @IBAction func ModifierTache(_ sender: Any) {
         
         
-        let appDelegate             =   UIApplication.shared.delegate as! AppDelegate
-        let context                 =   appDelegate.persistentContainer.viewContext
-        let data                    =   (ItemPhoto.image)!.pngData()
-        let newItem                 =   Item(context: context)
-        newItem.message             =   ItemTitleText?.text
-        newItem.descriptionitem     =   ItemDescription!.text
-        newItem.verif               =   false
-        newItem.photo               =   data
-        newItem.datecreation        =   itemdatecreation
-        newItem.datemodification    =   Date()
-        newItem.category            =   itemcategory
+        let appDelegate              =   UIApplication.shared.delegate as! AppDelegate
+        let context                  =   appDelegate.persistentContainer.viewContext
+        let data                     =   (ItemPhoto.image)!.pngData()
+        let newItem                  =   itemEdit
+        newItem!.message             =   ItemTitleText?.text
+        newItem!.descriptionitem     =   ItemDescription!.text
+        newItem!.verif               =   false
+        newItem!.photo               =   data
+        newItem!.datecreation        =   itemdatecreation
+        newItem!.datemodification    =   Date()
+        newItem!.category            =   itemcategory
         
         
         
